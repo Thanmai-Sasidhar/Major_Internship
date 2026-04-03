@@ -166,58 +166,57 @@ def format_class_name(name):
 
 # Function to display improved visualization of the prediction
 
+def display_prediction(original_class, formatted_class, confidence, top_classes, formatted_top_classes, top_probabilities):
+    # Main prediction header
+    st.markdown(
+        f"<h2 class='prediction-header'>Diagnosis: {formatted_class}</h2>", unsafe_allow_html=True)
+    st.markdown(
+        f"<p class='confidence-text'>Confidence: {confidence:.2f}%</p>", unsafe_allow_html=True)
 
-# def display_prediction(original_class, formatted_class, confidence, top_classes, formatted_top_classes, top_probabilities):
-#     # Main prediction header
-#     st.markdown(
-#         f"<h2 class='prediction-header'>Diagnosis: {formatted_class}</h2>", unsafe_allow_html=True)
-#     st.markdown(
-#         f"<p class='confidence-text'>Confidence: {confidence:.2f}%</p>", unsafe_allow_html=True)
+    # Create a container for the chart
+    st.markdown("<div class='chart-container'>", unsafe_allow_html=True)
 
-#     # Create a container for the chart
-#     st.markdown("<div class='chart-container'>", unsafe_allow_html=True)
+    # Create DataFrame for top predictions
+    prediction_df = pd.DataFrame({
+        "Disease": formatted_top_classes,
+        "Confidence": top_probabilities
+    })
 
-#     # Create DataFrame for top predictions
-#     prediction_df = pd.DataFrame({
-#         "Disease": formatted_top_classes,
-#         "Confidence": top_probabilities
-#     })
+    # Create improved bar chart with better styling
+    fig, ax = plt.subplots(figsize=(5, 3))  # compact size
+    
+    colors = plt.cm.Greens(np.linspace(0.6, 0.95, len(prediction_df)))
+    
+    bars = ax.barh(prediction_df["Disease"],
+                   prediction_df["Confidence"], color=colors)
+    
+    ax.set_xlabel("Confidence (%)", fontsize=8)
+    ax.set_title("Top Predictions", fontsize=10)
+    
+    plt.xticks(fontsize=7)
+    plt.yticks(fontsize=8)
+    
+    for i, bar in enumerate(bars):
+        ax.text(bar.get_width() + 0.5,
+                bar.get_y() + bar.get_height()/2,
+                f"{prediction_df['Confidence'][i]:.1f}%",
+                va='center', fontsize=7)
+    
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    
+    plt.tight_layout()  
+    st.pyplot(fig)
+    st.markdown("</div>", unsafe_allow_html=True)
 
-#     # Create improved bar chart with better styling
-#     fig, ax = plt.subplots(figsize=(5, 3))  # compact size
-    
-#     colors = plt.cm.Greens(np.linspace(0.6, 0.95, len(prediction_df)))
-    
-#     bars = ax.barh(prediction_df["Disease"],
-#                    prediction_df["Confidence"], color=colors)
-    
-#     ax.set_xlabel("Confidence (%)", fontsize=8)
-#     ax.set_title("Top Predictions", fontsize=10)
-    
-#     plt.xticks(fontsize=7)
-#     plt.yticks(fontsize=8)
-    
-#     for i, bar in enumerate(bars):
-#         ax.text(bar.get_width() + 0.5,
-#                 bar.get_y() + bar.get_height()/2,
-#                 f"{prediction_df['Confidence'][i]:.1f}%",
-#                 va='center', fontsize=7)
-    
-#     ax.spines['top'].set_visible(False)
-#     ax.spines['right'].set_visible(False)
-    
-#     plt.tight_layout()  
-#     st.pyplot(fig)
-#     st.markdown("</div>", unsafe_allow_html=True)
+    # Create a clean table view of the predictions
+    st.markdown("<h3 class='sub-header'>Detailed Predictions:</h3>",
+                unsafe_allow_html=True)
+    styled_df = prediction_df.style.format(
+        {"Confidence": "{:.2f}%"}).background_gradient(cmap='Greens', subset=['Confidence'])
+    st.table(styled_df)
 
-#     # Create a clean table view of the predictions
-#     st.markdown("<h3 class='sub-header'>Detailed Predictions:</h3>",
-#                 unsafe_allow_html=True)
-#     styled_df = prediction_df.style.format(
-#         {"Confidence": "{:.2f}%"}).background_gradient(cmap='Greens', subset=['Confidence'])
-#     st.table(styled_df)
-
-# # Function to display disease information
+# Function to display disease information
 
 
 def display_disease_info(class_name, class_names):
