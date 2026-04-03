@@ -207,7 +207,7 @@ def display_prediction(original_class, formatted_class, confidence, top_classes,
     
     # plt.tight_layout()  
     # st.pyplot(fig)
-    st.markdown("</div>", unsafe_allow_html=True)
+    # st.markdown("</div>", unsafe_allow_html=True)
 
     # Create a clean table view of the predictions
     st.markdown("<h3 class='sub-header'>Detailed Predictions:</h3>",
