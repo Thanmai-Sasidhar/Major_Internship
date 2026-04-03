@@ -205,8 +205,8 @@ def display_prediction(original_class, formatted_class, confidence, top_classes,
     ax.spines['right'].set_visible(False)
 
     # Customize tick labels
-    plt.xticks(fontsize=10)
-    plt.yticks(fontsize=11)
+    plt.xticks(fontsize=5)
+    plt.yticks(fontsize=6)
 
     # Add percentage labels with better formatting
     for i, bar in enumerate(bars):
