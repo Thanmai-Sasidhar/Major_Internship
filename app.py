@@ -397,6 +397,14 @@ def main():
         if uploaded_file is not None:
             st.session_state.uploaded_file = uploaded_file
 
+            # show preview BELOW upload
+            image = Image.open(uploaded_file)
+        
+            # resize image
+            image = image.resize((300, 300))
+        
+            st.image(image, caption="Preview")
+
         # Example images section with better layout
        
 
@@ -414,9 +422,7 @@ def main():
         st.markdown("</div>", unsafe_allow_html=True)
 
     with col2:
-        st.markdown("<div class='results-section'>", unsafe_allow_html=True)
-        st.markdown("<h3 class='sub-header'>Image Preview</h3>",
-                    unsafe_allow_html=True)
+       
 
         # Display the uploaded image with better styling
         if st.session_state.uploaded_file is not None:
