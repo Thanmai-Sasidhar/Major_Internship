@@ -398,20 +398,7 @@ def main():
             st.session_state.uploaded_file = uploaded_file
 
         # Example images section with better layout
-        st.markdown("<h3 class='sub-header'>Or try an example:</h3>",
-                    unsafe_allow_html=True)
-
-        # Use columns for better button layout
-        example_col1, example_col2, example_col3 = st.columns(3)
-
-        if example_col1.button("Healthy Tomato", key="example1", use_container_width=True):
-            st.session_state.uploaded_file = "images/examples/tomato_healthy.jpg"
-
-        if example_col2.button("Potato Late Blight", key="example2", use_container_width=True):
-            st.session_state.uploaded_file = "images/examples/Potato_Late_blight.jpeg"
-
-        if example_col3.button("Pepper Bacterial Spot", key="example3", use_container_width=True):
-            st.session_state.uploaded_file = "images/examples/Pepper_bell_Bacterial_spot.jpeg"
+       
 
         # Display available classes in an expander
         with st.expander("Available Plant Diseases for Classification"):
