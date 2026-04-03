@@ -184,44 +184,42 @@ def display_prediction(original_class, formatted_class, confidence, top_classes,
     })
 
     # Create improved bar chart with better styling
-    fig, ax = plt.subplots(figsize=(4, 2))
-
-    # Custom color palette - green gradient
+    fig, ax = plt.subplots(figsize=(6, 3.5))  # perfect small size
+    
     colors = plt.cm.Greens(np.linspace(0.6, 0.95, len(prediction_df)))
-
+    
     bars = ax.barh(prediction_df["Disease"],
                    prediction_df["Confidence"], color=colors)
-
-    # Improve chart appearance
-    ax.set_xlabel("Confidence (%)", fontsize=6, fontweight='bold')
-    ax.set_ylabel("Disease", fontsize=6, fontweight='bold')
-    ax.set_title("Top 5 Predictions", fontsize=8, fontweight='bold', pad=20)
-
-    # Add grid lines for better readability
-    ax.grid(axis='x', linestyle='--', alpha=0.7)
-
-    # Remove top and right spines
+    
+    # Labels (balanced size)
+    ax.set_xlabel("Confidence (%)", fontsize=9, fontweight='bold')
+    ax.set_ylabel("Disease", fontsize=9, fontweight='bold')
+    ax.set_title("Top 5 Predictions", fontsize=11, fontweight='bold', pad=10)
+    
+    # Grid
+    ax.grid(axis='x', linestyle='--', alpha=0.6)
+    
+    # Clean look
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
-
-    # Customize tick labels
-    plt.xticks(fontsize=5)
-    plt.yticks(fontsize=6)
-
-    # Add percentage labels with better formatting
+    
+    # Tick size (readable)
+    plt.xticks(fontsize=8)
+    plt.yticks(fontsize=9)
+    
+    # Value labels (smaller + neat)
     for i, bar in enumerate(bars):
-        ax.text(bar.get_width() + 1, bar.get_y() + bar.get_height()/2,
-                f"{prediction_df['Confidence'][i]:.2f}%",
-                va='center', fontsize=10, fontweight='bold')
-
-    # Set background color
+        ax.text(bar.get_width() + 0.5,
+                bar.get_y() + bar.get_height()/2,
+                f"{prediction_df['Confidence'][i]:.1f}%",
+                va='center', fontsize=8)
+    
+    # Background
     fig.patch.set_facecolor('#f9f9f9')
     ax.set_facecolor('#f9f9f9')
-
-    # Tight layout
+    
     plt.tight_layout()
-
-    # Display the chart
+    
     st.pyplot(fig)
     st.markdown("</div>", unsafe_allow_html=True)
 
