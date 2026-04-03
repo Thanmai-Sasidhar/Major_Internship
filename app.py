@@ -422,44 +422,6 @@ def main():
         st.markdown("</div>", unsafe_allow_html=True)
 
     with col2:
-       
-
-        # Display the uploaded image with better styling
-        if st.session_state.uploaded_file is not None:
-            # Handle both string paths (example images) and uploaded file objects
-            if isinstance(st.session_state.uploaded_file, str):
-                image = Image.open(st.session_state.uploaded_file)
-                st.image(image, caption="Selected Image",
-                         use_container_width=True)
-
-                # Process the file for prediction
-                with open(st.session_state.uploaded_file, "rb") as f:
-                    file_content = f.read()
-                    uploaded_file_obj = type('obj', (object,), {
-                        'getvalue': lambda: file_content
-                    })
-
-                # Make prediction
-                st.session_state.prediction_results = predict(
-                    uploaded_file_obj, model, transform, label_encoder, device
-                )
-                st.session_state.image_processed = True
-
-            else:
-                # Handle normal uploaded file
-                image = Image.open(st.session_state.uploaded_file)
-                st.image(image, caption="Uploaded Image",
-                         use_container_width=True)
-
-                # Make prediction
-                st.session_state.prediction_results = predict(
-                    st.session_state.uploaded_file, model, transform, label_encoder, device
-                )
-                st.session_state.image_processed = True
-        else:
-            # Placeholder when no image is uploaded
-            st.info(
-                "Please upload an image or select an example to see the preview and diagnosis.")
 
         st.markdown("</div>", unsafe_allow_html=True)
 
