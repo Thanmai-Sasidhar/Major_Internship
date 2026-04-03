@@ -1,6 +1,6 @@
 # Core libraries
-torch==2.9.0
-torchvision==0.20.1
+torch
+torchvision
 numpy==1.26.4
 pandas==2.2.3
 Pillow==11.0.0
