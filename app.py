@@ -174,7 +174,7 @@ def display_prediction(original_class, formatted_class, confidence, top_classes,
         f"<p class='confidence-text'>Confidence: {confidence:.2f}%</p>", unsafe_allow_html=True)
 
     # Create a container for the chart
-    st.markdown("<div class='chart-container'>", unsafe_allow_html=True)
+    # st.markdown("<div class='chart-container'>", unsafe_allow_html=True)
 
     # Create DataFrame for top predictions
     prediction_df = pd.DataFrame({
