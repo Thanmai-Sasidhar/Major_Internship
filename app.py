@@ -370,7 +370,6 @@ def main():
         st.session_state.prediction_results = None
 
     with col1:
-        st.markdown("<div class='upload-section'>", unsafe_allow_html=True)
         st.markdown("<h3 class='sub-header'>Upload Image</h3>",
                     unsafe_allow_html=True)
 
