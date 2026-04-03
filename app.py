@@ -396,16 +396,15 @@ def main():
 
         if uploaded_file is not None:
             st.session_state.uploaded_file = uploaded_file
-
-            # show preview BELOW upload
+        
+            # Preview
             image = Image.open(uploaded_file)
-        
-            # resize image
             image = image.resize((200, 200))
-        
             st.image(image, caption="Preview")
-
-        # Example images section with better layout
+        
+            # 🔥 ADD THIS (IMPORTANT)
+            st.session_state.prediction_results = predict(uploaded_file, model, transform, label_encoder, device)
+            st.session_state.image_processed = True        # Example images section with better layout
        
 
         # Display available classes in an expander
