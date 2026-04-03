@@ -486,47 +486,7 @@ def main():
         display_disease_info(class_name, class_names)
 
     # Show model information in sidebar
-    with st.sidebar:
-        st.markdown("<h2 style='color: #2E7D32;'>About the Model</h2>",
-                    unsafe_allow_html=True)
-        st.write(
-            "This application uses a Convolutional Neural Network (CNN) to classify plant diseases from leaf images.")
-
-        st.markdown(
-            "<h3 style='color: #43A047; margin-top: 20px;'>Model Architecture:</h3>", unsafe_allow_html=True)
-        if model_loaded:
-            st.write(
-                "- **Model Type:** CNN with 5 convolutional blocks with advanced architectures")
-            st.write(f"- **Number of Classes:** {len(class_names)}")
-            st.write("- **Test Accuracy:** 96.5%")
-
-        st.markdown(
-            "<h3 style='color: #43A047; margin-top: 20px;'>Dataset Information:</h3>", unsafe_allow_html=True)
-        st.write("- Trained on the PlantVillage dataset")
-        st.write("- Contains 15 classes of plant diseases and healthy plants")
-        st.write("- Classes include diseases in tomatoes, potatoes, and peppers")
-
-        st.markdown(
-            "<h3 style='color: #43A047; margin-top: 20px;'>Usage Instructions:</h3>", unsafe_allow_html=True)
-        st.write("1. Upload an image of a plant leaf")
-        st.write("2. View the diagnosis and recommended actions")
-        st.write("3. Check detailed information about the disease")
-
-        st.markdown(
-            "<h3 style='color: #43A047; margin-top: 20px;'>Developers:</h3>", unsafe_allow_html=True)
-        st.markdown("""
-        - **Sayed Gamal**
-        - **Youssef Mohammed**
-        """)
-
-        st.markdown(
-            "<h3 style='color: #43A047; margin-top: 20px;'>Project Repository:</h3>", unsafe_allow_html=True)
-        st.markdown(
-            "[GitHub: Plant-Disease-Classifier](https://github.com/sayedgamal99/Plant-Disease-Classifier)")
-
-        st.markdown("---")
-        st.caption("© 2025 Plant Disease Classifier - All Rights Reserved")
-
+   
 
 if __name__ == "__main__":
     main()
