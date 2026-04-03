@@ -401,7 +401,7 @@ def main():
             image = Image.open(uploaded_file)
         
             # resize image
-            image = image.resize((300, 300))
+            image = image.resize((200, 200))
         
             st.image(image, caption="Preview")
 
