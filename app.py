@@ -183,30 +183,30 @@ def display_prediction(original_class, formatted_class, confidence, top_classes,
     })
 
     # Create improved bar chart with better styling
-    fig, ax = plt.subplots(figsize=(5, 3))  # compact size
+    # fig, ax = plt.subplots(figsize=(5, 3))  # compact size
     
-    colors = plt.cm.Greens(np.linspace(0.6, 0.95, len(prediction_df)))
+    # colors = plt.cm.Greens(np.linspace(0.6, 0.95, len(prediction_df)))
     
-    bars = ax.barh(prediction_df["Disease"],
-                   prediction_df["Confidence"], color=colors)
+    # bars = ax.barh(prediction_df["Disease"],
+    #                prediction_df["Confidence"], color=colors)
     
-    ax.set_xlabel("Confidence (%)", fontsize=8)
-    ax.set_title("Top Predictions", fontsize=10)
+    # ax.set_xlabel("Confidence (%)", fontsize=8)
+    # ax.set_title("Top Predictions", fontsize=10)
     
-    plt.xticks(fontsize=7)
-    plt.yticks(fontsize=8)
+    # plt.xticks(fontsize=7)
+    # plt.yticks(fontsize=8)
     
-    for i, bar in enumerate(bars):
-        ax.text(bar.get_width() + 0.5,
-                bar.get_y() + bar.get_height()/2,
-                f"{prediction_df['Confidence'][i]:.1f}%",
-                va='center', fontsize=7)
+    # for i, bar in enumerate(bars):
+    #     ax.text(bar.get_width() + 0.5,
+    #             bar.get_y() + bar.get_height()/2,
+    #             f"{prediction_df['Confidence'][i]:.1f}%",
+    #             va='center', fontsize=7)
     
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
+    # ax.spines['top'].set_visible(False)
+    # ax.spines['right'].set_visible(False)
     
-    plt.tight_layout()  
-    st.pyplot(fig)
+    # plt.tight_layout()  
+    # st.pyplot(fig)
     st.markdown("</div>", unsafe_allow_html=True)
 
     # Create a clean table view of the predictions
