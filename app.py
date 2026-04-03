@@ -184,7 +184,7 @@ def display_prediction(original_class, formatted_class, confidence, top_classes,
     })
 
     # Create improved bar chart with better styling
-    fig, ax = plt.subplots(figsize=(12, 6))
+    fig, ax = plt.subplots(figsize=(7, 4))
 
     # Custom color palette - green gradient
     colors = plt.cm.Greens(np.linspace(0.6, 0.95, len(prediction_df)))
