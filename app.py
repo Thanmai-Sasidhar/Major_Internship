@@ -193,9 +193,9 @@ def display_prediction(original_class, formatted_class, confidence, top_classes,
                    prediction_df["Confidence"], color=colors)
 
     # Improve chart appearance
-    ax.set_xlabel("Confidence (%)", fontsize=12, fontweight='bold')
-    ax.set_ylabel("Disease", fontsize=12, fontweight='bold')
-    ax.set_title("Top 5 Predictions", fontsize=16, fontweight='bold', pad=20)
+    ax.set_xlabel("Confidence (%)", fontsize=6, fontweight='bold')
+    ax.set_ylabel("Disease", fontsize=6, fontweight='bold')
+    ax.set_title("Top 5 Predictions", fontsize=8, fontweight='bold', pad=20)
 
     # Add grid lines for better readability
     ax.grid(axis='x', linestyle='--', alpha=0.7)
