@@ -9,7 +9,7 @@ import numpy as np
 from PIL import Image
 from plant_disease_classifier import PlantDiseaseModel, predict_image
 import warnings
-
+ 
 warnings.filterwarnings("ignore")
 # Set page configuration
 st.set_page_config(
